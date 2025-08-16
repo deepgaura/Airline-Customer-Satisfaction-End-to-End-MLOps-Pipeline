@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/DEEP%20MAHAJAN/Pictures/Project%206/mlruns/365050900843172629/models/m-b128857b22e44f139785baba86f912ed/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.4
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.1
+mlflow_version: 3.2.0
+model_id: m-b128857b22e44f139785baba86f912ed
+model_size_bytes: 1030970
+model_uuid: m-b128857b22e44f139785baba86f912ed
+prompts: null
+run_id: 670fc60850d343a3957c38ee96d4fb27
+utc_time_created: '2025-08-13 16:30:17.742995'

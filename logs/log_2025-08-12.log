@@ -1,0 +1,11 @@
+2025-08-12 01:09:06,231 - INFO - Starting the pipeline of data processing
+2025-08-12 01:09:06,231 - INFO - Data Processing Started
+2025-08-12 01:09:06,407 - INFO - Data read successful : Data shape: (80847, 25)
+2025-08-12 01:09:06,407 - INFO - Dropping unnecessary columns : ['MyUnknownColumn', 'id']
+2025-08-12 01:09:06,415 - INFO - Columns dropped Successfully : Shape = (80847, 23)
+2025-08-12 01:09:06,421 - INFO - Handling Outliers : Columns: ['Flight Distance', 'Departure Delay in Minutes', 'Arrival Delay in Minutes', 'Checkin service']
+2025-08-12 01:09:06,449 - INFO - Outliers handled successfully: Shape = (80847, 23)
+2025-08-12 01:09:06,449 - INFO - Handling null values
+2025-08-12 01:09:06,451 - INFO - Missing values Handled successfully : Shape ={df.shape}
+2025-08-12 01:09:06,885 - INFO - Processed data saved successfully
+2025-08-12 01:09:06,885 - INFO - Data Processing Pipeline Completed Successfully

@@ -1,0 +1,21 @@
+2025-08-10 21:39:41,518 - INFO - Your Database Configuration has been set up
+2025-08-10 21:39:41,604 - INFO - Successfully connected to the database
+2025-08-10 21:39:41,963 - INFO - Data fetched successfully!
+2025-08-10 21:39:42,225 - INFO - Data successfully saved to ./artifacts/raw\data.csv
+2025-08-10 21:39:42,226 - INFO - Disconnected from the database
+2025-08-10 22:36:19,123 - INFO - data ingestion has started
+2025-08-10 22:36:19,124 - INFO - Directory for data ingestion created
+2025-08-10 22:36:19,327 - INFO - Raw Data loaded Successfully
+2025-08-10 22:36:19,359 - INFO - Data Splitted Successfully
+2025-08-10 22:36:19,359 - ERROR - Error in C:\Users\DEEP MAHAJAN\Pictures\Project 6\src\data_ingestion.py, line30 : Error while splitting the data
+2025-08-10 22:38:00,808 - INFO - Your Database Configuration has been set up
+2025-08-10 22:38:00,902 - INFO - Successfully connected to the database
+2025-08-10 22:38:01,497 - INFO - Data fetched successfully!
+2025-08-10 22:38:01,836 - INFO - Data successfully saved to ./artifacts/raw\data.csv
+2025-08-10 22:38:01,837 - INFO - Disconnected from the database
+2025-08-10 22:39:16,528 - INFO - Data ingestion has started
+2025-08-10 22:39:16,528 - INFO - Directory for data ingestion created
+2025-08-10 22:39:16,766 - INFO - Raw data loaded successfully
+2025-08-10 22:39:16,791 - INFO - Data split successfully into training and testing sets
+2025-08-10 22:39:17,279 - INFO - Training data saved to: ./artifacts\ingested_data\train.csv
+2025-08-10 22:39:17,279 - INFO - Testing data saved to: ./artifacts\ingested_data\test.csv

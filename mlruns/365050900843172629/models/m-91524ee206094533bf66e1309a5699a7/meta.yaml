@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/DEEP%20MAHAJAN/Pictures/Project%206/mlruns/365050900843172629/models/m-91524ee206094533bf66e1309a5699a7/artifacts
+creation_timestamp: 1755107901052
+experiment_id: '365050900843172629'
+last_updated_timestamp: 1755107908575
+model_id: m-91524ee206094533bf66e1309a5699a7
+model_type: null
+name: model
+source_run_id: 467f0f4c419c4b8bb2c47d0e724afaf9
+status: 2
+status_message: null
