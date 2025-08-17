@@ -1,13 +1,10 @@
-numpy 
-pandas 
+numpy
+pandas
 setuptools
 scikit-learn
 lightgbm
-#tensorboard #for model monitoring and comparison
-torch
 matplotlib
-mlflow # for experiment tracking
-#dvc
+mlflow
 flask
 pylint
 flake8
