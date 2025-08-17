@@ -1,26 +1,30 @@
-# syntax=docker/dockerfile:1.7
+# Use a lightweight Python image
+FROM python:slim
 
-FROM python:3.11-slim
-
+# Set environment variables to prevent Python from writing .pyc files & Ensure Python output is not buffered
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
+# Set the working directory
 WORKDIR /app
 
-# LightGBM needs this
-RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install system dependencies required by LightGBM
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgomp1 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install only runtime deps; BuildKit cache speeds up repeat builds
-COPY requirements.txt .
-RUN --mount=type=cache,target=/root/.cache/pip \
-    python -m pip install --upgrade pip && \
-    pip install -r requirements.txt
-
-# Copy app last to maximize layer cache
+# Copy the application code
 COPY . .
 
-# Expose Flask port (adjust if different)
+# Install the package in editable mode
+RUN pip install --no-cache-dir -e .
+
+# Train the model before running the application
+RUN python main.py
+
+# Expose the port that Flask will run on
 EXPOSE 5000
 
+# Command to run the app
 CMD ["python", "application.py"]
