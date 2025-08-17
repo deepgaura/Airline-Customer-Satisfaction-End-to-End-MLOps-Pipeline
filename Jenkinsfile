@@ -61,6 +61,24 @@ pipeline {
                 }
             }
         }
+        stage('Building Docker image') {
+            steps {
+                script {
+                    // Building Docker image
+                    echo 'Building Docker image...'
+                    docker.build("mlops")
+                }
+            }
+        }
+        stage('Scanning Docker image') {
+            steps {
+                script {
+                    // Scanning Docker image
+                    echo 'Scanning Docker image...'
+                    sh "trivy image mlops:latest --format table -o trivy-image-scan-report.html"
+                }
+            }
+        }
 
     }
 }
