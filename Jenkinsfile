@@ -1,8 +1,15 @@
+// Jenkinsfile
+
+def dockerImage
+
 pipeline {
     agent any
 
     environment {
         VENV_DIR = 'venv'
+        DOCKERHUB_CREDENTIAL_ID = 'mlops-dockerhub'
+        DOCKERHUB_REGISTRY = 'https://registry.hub.docker.com'
+        DOCKERHUB_REPOSITORY = 'deep2107/prediction-mlops-app'
     }
     
     stages {
@@ -10,14 +17,9 @@ pipeline {
             steps {
                 script {
                     echo 'Clonning from Github Repo...'
-                    checkout scmGit(
-                        branches: [[name: '*/main']],
-                        extensions: [],
-                        userRemoteConfigs: [[
-                            credentialsId: 'mlops-github-token',
-                            url: 'https://github.com/deepgaura/MLOPS-PROJECT.git'
-                        ]]
-                    )
+                    git branch: 'main',
+                        credentialsId: 'mlops-github-token',
+                        url: 'https://github.com/deepgaura/MLOPS-PROJECT.git'
                 }
             }
         }
@@ -64,8 +66,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building Docker image...'
-                    // 👇 Disable BuildKit so proxy is respected
-                    sh 'DOCKER_BUILDKIT=0 docker build -t mlops .'
+                    dockerImage = docker.build("${DOCKERHUB_REPOSITORY}:latest")
                 }
             }
         }
@@ -74,7 +75,18 @@ pipeline {
             steps {
                 script {
                     echo 'Scanning Docker image...'
-                    sh "trivy image mlops:latest --format table -o trivy-image-scan-report.html"
+                    sh "trivy image ${DOCKERHUB_REPOSITORY}:latest --format table -o trivy-image-scan-report.html"
+                }
+            }
+        }
+
+        stage('Pushing Docker Image') {
+            steps {
+                script {
+                    echo 'Pushing Docker Image........'
+                    docker.withRegistry("${DOCKERHUB_REGISTRY}", "${DOCKERHUB_CREDENTIAL_ID}") {
+                        dockerImage.push('latest')
+                    }
                 }
             }
         }
