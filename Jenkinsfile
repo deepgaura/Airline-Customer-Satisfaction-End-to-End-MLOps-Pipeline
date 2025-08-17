@@ -105,7 +105,8 @@ pipeline {
             steps {
                 script {
                     echo 'AWS Deployment........'
-                    sh "aws ecs update-service --cluster dataguru_ecs --service dataguru_mlops-service --force-new-deployment"
+                    sh 'aws ecs update-service --cluster dataguru_ecs --service dataguru_mlops-service --region us-east-1 --force-new-deployment'
+
                 }
             }
         }
