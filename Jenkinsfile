@@ -106,7 +106,7 @@ pipeline {
               script {
                 echo 'AWS Deployment........'
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]) {
-                  sh 'aws ecs update-service --cluster dataguru_ecs --service dataguru_mlops-service --region us-east-1 --force-new-deployment'
+                  sh 'aws ecs update-service --cluster dataguru_ecs --service dataguru_mlops-service --region ap-south-1 --force-new-deployment'
                 }
               }
             }
