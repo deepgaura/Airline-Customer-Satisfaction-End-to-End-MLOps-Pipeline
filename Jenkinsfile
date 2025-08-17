@@ -101,13 +101,13 @@ pipeline {
             }
         }
 
-        // stage('AWS Deployment') {
-        //     steps {
-        //         script {
-        //             echo 'AWS Deployment........'
-        //             sh "aws ecs update-service --cluster dataguru_ecs --service dataguru_service --force-new-deployment"
-        //         }
-        //     }
-        // }
+        stage('AWS Deployment') {
+            steps {
+                script {
+                    echo 'AWS Deployment........'
+                    sh "aws ecs update-service --cluster dataguru_ecs --service dataguru_mlops-service --force-new-deployment"
+                }
+            }
+        }
     }
 }
