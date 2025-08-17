@@ -1,13 +1,14 @@
 numpy 
 pandas 
 setuptools
-mysql-connector-python
 scikit-learn
 lightgbm
-xgboost
-tensorboard #for model monitoring and comparison
+#tensorboard #for model monitoring and comparison
 torch
 matplotlib
 mlflow # for experiment tracking
-dvc
+#dvc
 flask
+pylint
+flake8
+black
