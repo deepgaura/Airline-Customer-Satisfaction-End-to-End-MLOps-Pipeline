@@ -61,15 +61,19 @@ pipeline {
                 }
             }
         }
-        stage('Building Docker image') {
-            steps {
-                script {
-                    // Building Docker image
-                    echo 'Building Docker image...'
-                    docker.build("mlops")
-                }
-            }
+       stage('Building Docker image') {
+    steps {
+        script {
+            echo 'Building Docker image...'
+            sh '''
+                docker build -t mlops \
+                  --build-arg HTTP_PROXY=http://http.docker.internal:3128 \
+                  --build-arg HTTPS_PROXY=http://http.docker.internal:3128 \
+                  --build-arg NO_PROXY=localhost,127.0.0.1,hubproxy.docker.internal,.docker.internal .
+            '''
         }
+    }
+}
         stage('Scanning Docker image') {
             steps {
                 script {
