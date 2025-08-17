@@ -8,7 +8,8 @@ pipeline {
     environment {
         VENV_DIR = 'venv'
         DOCKERHUB_CREDENTIAL_ID = 'mlops-dockerhub'
-        DOCKERHUB_REGISTRY = 'https://registry.hub.docker.com'
+        // FIX: Use correct Docker Hub registry endpoint
+        DOCKERHUB_REGISTRY = 'https://index.docker.io/v1/'
         DOCKERHUB_REPOSITORY = 'deep2107/prediction-mlops-app'
     }
     
@@ -96,3 +97,4 @@ pipeline {
         }
     }
 }
+

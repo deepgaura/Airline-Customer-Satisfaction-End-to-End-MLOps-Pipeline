@@ -1,30 +1,36 @@
 # Use a lightweight Python image
-FROM python:slim
+FROM python:3.11-slim
 
-# Set environment variables to prevent Python from writing .pyc files & Ensure Python output is not buffered
+# Prevent .pyc and force unbuffered output
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
-# Set the working directory
+# Workdir
 WORKDIR /app
 
-# Install system dependencies required by LightGBM
+# System deps (example: LightGBM runtime needs libgomp1)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgomp1 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-# Copy the application code
+# Copy only dependency list first for better caching
+# (Use ONE of these files, whichever you have)
+COPY requirements.txt ./ 
+# If you use pyproject.toml/poetry instead, copy those instead and adjust the install command.
+
+# Install Python deps (no cache to keep image small)
+RUN python -m pip install --upgrade pip \
+ && pip install --no-cache-dir -r requirements.txt
+
+# Now copy app code (keeps cache effective if only code changes)
 COPY . .
 
-# Install the package in editable mode
-RUN pip install --no-cache-dir -e .
+# If you have a small trained model needed at runtime, ensure it exists at build time (Step 4)
+# and is inside ./models/ so it gets copied here.
 
-# Train the model before running the application
-RUN python main.py
-
-# Expose the port that Flask will run on
+# Expose Flask port
 EXPOSE 5000
 
-# Command to run the app
+# Start the app
 CMD ["python", "application.py"]

@@ -1,0 +1,35 @@
+# Python junk
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Local envs & tools
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+
+# Big local dirs
+artifacts/
+data/
+datasets/
+notebooks/
+logs/
+tmp/
+dist/
+build/
+
+# VCS
+.git/
+.gitignore
+
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Docker
+Dockerfile.*
+docker-compose*.yml
