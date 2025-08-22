@@ -68,7 +68,7 @@ Airline-Customer-Satisfaction-End-to-End-MLOps-Pipeline/
 
 ## 🖥️ Deployed Application
 
-![Deployed App Screenshot](https://github.com/user-attachments/assets/6acb5c4c-2c95-4281-9d86-c1ca68358877)
+<img width="1892" height="1057" alt="Screenshot 2025-08-22 191631" src="https://github.com/user-attachments/assets/e76e9adb-591f-4200-ba03-7f2b337a8cef" />
 
 
 > 📌 To add this screenshot:  
