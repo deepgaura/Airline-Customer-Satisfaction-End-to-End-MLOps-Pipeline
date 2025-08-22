@@ -25,16 +25,36 @@ It covers data ingestion, feature engineering, model training, experiment tracki
 ---
 
 ## 📂 Project Structure
-├── airflow_dags/ # ETL pipeline DAGs
-├── src/ # Core ML code
-├── static/ # Static files for Flask app
-├── templates/ # Flask HTML templates
-├── utils/ # Utility functions
-├── Dockerfile # Docker image build
-├── Jenkinsfile # Jenkins CI/CD pipeline
-├── application.py # Flask app entrypoint
-├── requirements.txt # Dependencies
-└── README.md # Project documentation
+
+```plaintext
+Airline-Customer-Satisfaction-End-to-End-MLOps-Pipeline/
+│
+├── airflow_dags/        # ETL pipeline DAGs
+├── custom_jenkins/      # Jenkins custom scripts/config
+├── logs/                # Log files
+├── mlops.egg-info/      # Metadata for packaging
+├── mlruns/              # MLflow runs tracking
+├── src/                 # Core ML code
+├── static/              # Static files for Flask app
+├── templates/           # Flask HTML templates
+├── tensorboard_logs/    # TensorBoard logs
+├── utils/               # Utility functions
+│
+├── .dockerignore        # Ignore rules for Docker
+├── .dvcignore           # Ignore rules for DVC
+├── .gitignore           # Ignore rules for Git
+├── Dockerfile           # Docker image build
+├── Jenkinsfile          # Jenkins CI/CD pipeline
+├── Ml_op_project.ipynb  # Jupyter notebook (experiments)
+├── application.py       # Flask app entrypoint
+├── dvc.lock             # DVC lock file
+├── dvc.yaml             # DVC pipeline stages
+├── main.py              # Main script
+├── requirements.txt     # Dependencies
+├── setup.py             # Setup for packaging
+├── test.py              # Unit tests
+├── testing.py           # Additional tests
+└── README.md            # Project documentation
 
 
 ---
@@ -47,9 +67,9 @@ It covers data ingestion, feature engineering, model training, experiment tracki
 ---
 
 ## 🖥️ Deployed Application
-Here’s a screenshot of the live app deployed on AWS:
 
-![Deployed App Screenshot](./images/deployed_app.png)
+![Deployed App Screenshot](https://github.com/user-attachments/assets/6acb5c4c-2c95-4281-9d86-c1ca68358877)
+
 
 > 📌 To add this screenshot:  
 > 1. Create an `images/` folder in your repo.  
@@ -73,12 +93,12 @@ Here’s a screenshot of the live app deployed on AWS:
    cd Airline-Customer-Satisfaction-End-to-End-MLOps-Pipeline
 2. Create a virtual environment & install dependencies:
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 
 3. Run Flask app:
 
-python application.py
+    python application.py
 
 
 4. Access at http://127.0.0.1:5000/
